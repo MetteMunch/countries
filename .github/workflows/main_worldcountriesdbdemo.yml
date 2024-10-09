@@ -23,6 +23,11 @@ jobs:
           distribution: 'microsoft'
 
       - name: Build with Maven
+        env:
+          PROD_DB_URL: ${{secrets.PROD_DB_URL}}
+          PROD_USER: ${{secrets.PROD_USER}}
+          PROD_PASS: ${{secrets.PROD_PASS}}
+
         run: mvn clean install
 
       - name: Upload artifact for deployment job
